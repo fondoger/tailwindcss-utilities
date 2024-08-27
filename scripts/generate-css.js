@@ -48,6 +48,9 @@ function escapeDot(str) {
     return str.replace(/\./g, '\\.').replace('/', '\\/');
 }
 
+// Common presets
+css += `*, ::after, ::before { box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; }\n`;
+
 // Part 0: Limitations
 
 // - Color Palette: Only ['gray', 'red', 'green', 'amber', 'sky'] are supported
