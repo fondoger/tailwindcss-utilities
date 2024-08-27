@@ -370,7 +370,7 @@ for (const prefix of ['p', 'm', '-m']) {
             const css1 = prefix == 'p' ? 'padding' : 'margin';
             const a = dir == 'x' ? 'left' : 'top';
             const b = dir == 'x' ? 'right' : 'bottom';
-            css += `.${prefix}-${dir}-${escapeDot(size)} { ${css1}-${a}: ${config.theme.spacing[size]}; ${css1}-${b}: ${config.theme.spacing[size]}; }\n`;
+            css += `.${prefix}${dir}-${escapeDot(size)} { ${css1}-${a}: ${config.theme.spacing[size]}; ${css1}-${b}: ${config.theme.spacing[size]}; }\n`;
         }
     }
     for (const dir of ['s', 'e']) {
@@ -380,7 +380,7 @@ for (const prefix of ['p', 'm', '-m']) {
             }
             const css1 = prefix == 'p' ? 'padding' : 'margin';
             const css2 = dir == 's' ? 'inline-start' : 'inline-end';
-            css += `.${prefix}-${dir}-${escapeDot(size)} { ${css1}-${css2}: ${config.theme.spacing[size]}; }\n`;
+            css += `.${prefix}${dir}-${escapeDot(size)} { ${css1}-${css2}: ${config.theme.spacing[size]}; }\n`;
         }
     }
 }
