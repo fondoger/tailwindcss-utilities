@@ -8,6 +8,8 @@ A pure CSS static file which contains set of CSS Utility classes generated from 
 
 If you're looking for a full functional version, please refer to the [Official PlayCDN](https://tailwindcss.com/docs/installation/play-cdn) or [jsDelivr/UNPKG/Npmirror CDN](https://github.com/fondoger/tailwindcss-cdn), which is an in-browser JIT compiler.
 
+**Live Preview**: [TailwindCSS Viewer](https://fondoger.github.io/tailwindcss-utilities)
+
 **Usage**
 
 ```html
