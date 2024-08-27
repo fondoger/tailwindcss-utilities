@@ -4,9 +4,9 @@
 [![npm Downloads](https://img.shields.io/npm/dm/tailwindcss-utilities.svg?logo=npm&logoColor=fff)](https://npmcharts.com/compare/tailwindcss-utilities?minimal=true)
 
 
-A set of CSS Utility classes generated from tailwindcss. Suitable for plain HTML with CSS. This only contains pure CSS file, which should be more performant than the JIT version TailwindCSS PlayCDN.
+A pure CSS static file which contains set of CSS Utility classes generated from TailwindCSS. It should be more performant than the JIT version TailwindCSS PlayCDN. Suitable for old-style plain HTML developers.
 
-Since it is a plain CSS file, many dynamic features are unavailable. If you're looking for a full functional version, please refer to the [Official PlayCDN](https://tailwindcss.com/docs/installation/play-cdn) or [jsDelivr/UNPKG/Npmirror CDN](https://github.com/fondoger/tailwindcss-cdn), which is an in-browser JIT compiler.
+If you're looking for a full functional version, please refer to the [Official PlayCDN](https://tailwindcss.com/docs/installation/play-cdn) or [jsDelivr/UNPKG/Npmirror CDN](https://github.com/fondoger/tailwindcss-cdn), which is an in-browser JIT compiler.
 
 **Usage**
 
