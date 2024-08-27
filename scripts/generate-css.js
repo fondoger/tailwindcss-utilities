@@ -670,6 +670,12 @@ for (const size in config.theme.blur) {
     css += `.blur${suffix} { filter: blur(${config.theme.blur[size]}); }\n`;
 }
 
+// - Brightness
+for (const size in config.theme.brightness) {
+    const suffix = size == 'DEFAULT' ? '' : `-${size}`;
+    css += `.brightness${suffix} { filter: brightness(${config.theme.brightness[size]}); }\n`;
+}
+
 // - Drop Shadow
 for (const size in config.theme.dropShadow) {
     const suffix = size == 'DEFAULT' ? '' : `-${size}`;

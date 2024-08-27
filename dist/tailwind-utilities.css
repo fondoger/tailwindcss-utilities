@@ -996,6 +996,17 @@
 .blur-xl { filter: blur(24px); }
 .blur-2xl { filter: blur(40px); }
 .blur-3xl { filter: blur(64px); }
+.brightness-0 { filter: brightness(0); }
+.brightness-50 { filter: brightness(.5); }
+.brightness-75 { filter: brightness(.75); }
+.brightness-90 { filter: brightness(.9); }
+.brightness-95 { filter: brightness(.95); }
+.brightness-100 { filter: brightness(1); }
+.brightness-105 { filter: brightness(1.05); }
+.brightness-110 { filter: brightness(1.1); }
+.brightness-125 { filter: brightness(1.25); }
+.brightness-150 { filter: brightness(1.5); }
+.brightness-200 { filter: brightness(2); }
 .drop-shadow-sm { filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05)); }
 .drop-shadow { filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1),0 1px 1px rgb(0 0 0 / 0.06)); }
 .drop-shadow-md { filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07),0 2px 2px rgb(0 0 0 / 0.06)); }
