@@ -13,13 +13,20 @@ If you're looking for a full functional version, please refer to the [Official P
 **Usage**
 
 ```html
-<!-- From jsDelivr -->
-<link href=" https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.0/dist/tailwind-utilities.min.css" rel="stylesheet">
 <!-- From UNPKG -->
-<link href=" https://unpkg.com/tailwindcss-utilities@1.0.0/dist/tailwind-utilities.min.css" rel="stylesheet">
+<link href="https://unpkg.com/tailwindcss-utilities@1.0.5/dist/tailwind-utilities.min.css" rel="stylesheet" />
+<script src="https://unpkg.com/tailwindcss-utilities@1.0.5/dist/tailwind-utilities.min.js" defer ></script>
+
+<!-- From jsDelivr -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.5/dist/tailwind-utilities.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.5/dist/tailwind-utilities.min.js" defer></script>
+
 <!-- From Taobao npmmirror (option 3, for China users) -->
-<link href="https://registry.npmmirror.com/tailwindcss-utilities/1.0.0/files/dist/tailwindcss-utilities-min.css" rel="stylesheet"/>
+<link href="https://registry.npmmirror.com/tailwindcss-utilities/1.0.5/files/dist/tailwindcss-utilities-min.css" rel="stylesheet" />
+<script src="https://registry.npmmirror.com/tailwindcss-utilities/1.0.5/files/dist/tailwindcss-utilities-min.js" defer ></script>
 ```
+
+> **_NOTE:_**  If you don't need dark mode and Hover/Focus/Active pseudo classes, you can remove the `<script>` tag.
 
 
 ## Part 0: Limitations
@@ -29,11 +36,6 @@ If you're looking for a full functional version, please refer to the [Official P
 - Most numeric CSS values are not supported.
 
 - Responsive Design not supported
-
-- Dark Mode not supported
-
-- Hover, Focus and other states not supported
-
 
 ## Part 1: Layout
 
