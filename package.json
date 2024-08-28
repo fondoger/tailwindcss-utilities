@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-utilities",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A set of CSS Utility classes generated from tailwindcss. Suitable for plain HTML with CSS.",
   "main": "index.js",
   "scripts": {

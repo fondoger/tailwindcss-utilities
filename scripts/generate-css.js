@@ -335,7 +335,16 @@ for (const size of ['static', 'fixed', 'absolute', 'relative', 'sticky']) {
     css += `.${size} { position: ${size}; }\n`;
 }
 
-// - Top, Right, Bottom, Left: Not Support
+// - Top, Right, Bottom, Left: (Only 0 value is supported)
+for (const size of [0, 1, 2, 4, 8, 16, 32]) {
+    css += `.top-${size} { top: ${size}px; }\n`;
+    css += `.right-${size} { right: ${size}px; }\n`;
+    css += `.bottom-${size} { bottom: ${size}px; }\n`;
+    css += `.left-${size} { left: ${size}px; }\n`;
+    css += `.start-${size} { inset-inline-start: ${size}px; }\n`;
+    css += `.end-${size} { inset-inline-end: ${size}px; }\n`;
+    css += `.inset-${size} { inset: ${size}px; }\n`;
+}
 
 // - Visibility
 for (const size of ['visible', 'hidden', 'collapse']) {

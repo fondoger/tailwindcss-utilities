@@ -14,26 +14,28 @@ If you're looking for a full functional version, please refer to the [Official P
 
 ```html
 <!-- From UNPKG -->
-<link href="https://unpkg.com/tailwindcss-utilities@1.0.5/dist/tailwind-utilities.min.css" rel="stylesheet" />
-<script src="https://unpkg.com/tailwindcss-utilities@1.0.5/dist/tailwind-utilities.min.js" defer ></script>
+<link href="https://unpkg.com/tailwindcss-utilities@1.0.6/dist/tailwind-utilities.min.css" rel="stylesheet" crossorigin="anonymous" />
+<script src="https://unpkg.com/tailwindcss-utilities@1.0.6/dist/tailwind-utilities.min.js" defer ></script>
 
 <!-- From jsDelivr -->
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.5/dist/tailwind-utilities.min.css" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.5/dist/tailwind-utilities.min.js" defer></script>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.6/dist/tailwind-utilities.min.css" rel="stylesheet" crossorigin="anonymous" crossorigin="anonymous" />
+<script src="https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.6/dist/tailwind-utilities.min.js" defer></script>
 
 <!-- From Taobao npmmirror (option 3, for China users) -->
-<link href="https://registry.npmmirror.com/tailwindcss-utilities/1.0.5/files/dist/tailwindcss-utilities-min.css" rel="stylesheet" />
-<script src="https://registry.npmmirror.com/tailwindcss-utilities/1.0.5/files/dist/tailwindcss-utilities-min.js" defer ></script>
+<link href="https://registry.npmmirror.com/tailwindcss-utilities/1.0.6/files/dist/tailwindcss-utilities-min.css" rel="stylesheet" crossorigin="anonymous"  />
+<script src="https://registry.npmmirror.com/tailwindcss-utilities/1.0.6/files/dist/tailwindcss-utilities-min.js" defer ></script>
 ```
 
-> **_NOTE:_**  If you don't need dark mode and Hover/Focus/Active pseudo classes, you can remove the `<script>` tag.
+> **_NOTE:_**  If you don't need dark mode and Hover/Focus/Active pseudo classes, you can remove the `<script>` tag. And `crossorigin="anonymous"` of `link` tag must be added if you add the JS script.
 
 
 ## Part 0: Limitations
 
 - Color Palette: Only ['gray', 'red', 'green', 'amber', 'sky'] are supported
 
-- Most numeric CSS values are not supported.
+- Arbitrary values not supported. (eg: `w-[100px]`)
+
+- Most numeric CSS values are not supported. (eg: `w-0.5`)
 
 - Responsive Design not supported
 
@@ -125,9 +127,10 @@ If you're looking for a full functional version, please refer to the [Official P
     .static, .fixed, .absolute, .relative, .sticky
     ```
 
-- Position Top, Right, Bottom, Left: Not Support
+- Position Top, Right, Bottom, Left: (Only ['0', '1', '2', '4', '8', '16', '32'] are supported)
     ```css
-    NUMERIC CSS NOT AVAILABLE (eg: .top-1, .top-2)
+    .top-0, .top-1, .top-2, .top-4, .top-8, .top-16, .top-32
+    .right-0, .bottom-0, .left-0, .inset-0
     ```
 
 - Visibility
