@@ -14,19 +14,19 @@ If you're looking for a full functional version, please refer to the [Official P
 
 ```html
 <!-- From UNPKG -->
-<link href="https://unpkg.com/tailwindcss-utilities@1.0.6/dist/tailwind-utilities.min.css" rel="stylesheet" crossorigin="anonymous" />
-<script src="https://unpkg.com/tailwindcss-utilities@1.0.6/dist/tailwind-utilities.min.js" defer ></script>
+<link href="https://unpkg.com/tailwindcss-utilities@1.0.7/dist/tailwind-utilities.min.css" rel="stylesheet" crossorigin />
+<script src="https://unpkg.com/tailwindcss-utilities@1.0.7/dist/tailwind-utilities.min.js" defer ></script>
 
 <!-- From jsDelivr -->
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.6/dist/tailwind-utilities.min.css" rel="stylesheet" crossorigin="anonymous" crossorigin="anonymous" />
-<script src="https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.6/dist/tailwind-utilities.min.js" defer></script>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.7/dist/tailwind-utilities.min.css" rel="stylesheet" crossorigin crossorigin />
+<script src="https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.7/dist/tailwind-utilities.min.js" defer></script>
 
 <!-- From Taobao npmmirror (option 3, for China users) -->
-<link href="https://registry.npmmirror.com/tailwindcss-utilities/1.0.6/files/dist/tailwindcss-utilities-min.css" rel="stylesheet" crossorigin="anonymous"  />
-<script src="https://registry.npmmirror.com/tailwindcss-utilities/1.0.6/files/dist/tailwindcss-utilities-min.js" defer ></script>
+<link href="https://registry.npmmirror.com/tailwindcss-utilities/1.0.7/files/dist/tailwindcss-utilities-min.css" rel="stylesheet" crossorigin  />
+<script src="https://registry.npmmirror.com/tailwindcss-utilities/1.0.7/files/dist/tailwindcss-utilities-min.js" defer ></script>
 ```
 
-> **_NOTE:_**  If you don't need dark mode and Hover/Focus/Active pseudo classes, you can remove the `<script>` tag. And `crossorigin="anonymous"` of `link` tag must be added if you add the JS script.
+> **_NOTE:_**  If you don't need dark mode and Hover/Focus/Active pseudo classes, you can remove the `<script>` tag. And `crossorigin` of `link` tag must be added if you add the JS script.
 
 
 ## Part 0: Limitations

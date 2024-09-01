@@ -16,7 +16,7 @@ for (const color in config.theme.accentColor) {
 }
 // Size (Only ['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'] are supported)
 for (const height of Object.keys(config.theme.height)) {
-    if (['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'].indexOf(height) == -1) {
+    if (!['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'].includes(height)) {
         delete config.theme.height[height];
         delete config.theme.width[height];
         delete config.theme.size[height];
@@ -436,7 +436,7 @@ for (const size in config.theme.gridAutoRows) {
 
 // - Gap: (Only ['0', 'px', '1', '2', '4', '8', '16', '32'] are supported)
 for (const size in config.theme.gap) {
-    if (['0', 'px', '1', '2', '4', '8', '16', '32'].indexOf(size) == -1) {
+    if (!['0', 'px', '1', '2', '4', '8', '16', '32'].includes(size)) {
         continue;
     }
     css += `.gap-${escapeDot(size)} { gap: ${config.theme.gap[size]}; }\n`;
@@ -445,9 +445,9 @@ for (const size in config.theme.gap) {
 
 // - Justify Content
 for (const size of ['normal', 'start', 'end', 'center', 'between', 'around', 'evenly', 'stretch']) {
-    if (size in ['start', 'end']) {
+    if (['start', 'end'].includes(size)) {
         css += `.justify-${size} { justify-content: flex-${size}; }\n`;
-    } else if (size in ['between', 'around', 'evenly']) {
+    } else if (['between', 'around', 'evenly'].includes(size)) {
         css += `.justify-${size} { justify-content: space-${size}; }\n`;
     } else {
         css += `.justify-${size} { justify-content: ${size}; }\n`;
@@ -466,9 +466,9 @@ for (const size of ['auto', 'start', 'end', 'center', 'stretch']) {
 
 // - Align Content
 for (const size of ['normal', 'start', 'end', 'center', 'between', 'around', 'evenly', 'baseline', 'stretch']) {
-    if (size in ['start', 'end']) {
+    if (['start', 'end'].includes(size)) {
         css += `.content-${size} { align-content: flex-${size}; }\n`;
-    } else if (size in ['between', 'around', 'evenly']) {
+    } else if (['between', 'around', 'evenly'].includes(size)) {
         css += `.content-${size} { align-content: space-${size}; }\n`;
     } else {
         css += `.content-${size} { align-content: ${size}; }\n`;
@@ -477,7 +477,7 @@ for (const size of ['normal', 'start', 'end', 'center', 'between', 'around', 'ev
 
 // - Align Items
 for (const size of ['start', 'end', 'center', 'baseline', 'stretch']) {
-    if (size in ['start', 'end']) {
+    if (['start', 'end'].includes(size)) {
         css += `.items-${size} { align-items: flex-${size}; }\n`;
     } else {
         css += `.items-${size} { align-items: ${size}; }\n`;
@@ -486,7 +486,7 @@ for (const size of ['start', 'end', 'center', 'baseline', 'stretch']) {
 
 // - Align Self
 for (const size of ['auto', 'start', 'end', 'center', 'baseline', 'stretch']) {
-    if (size in ['start', 'end']) {
+    if (['start', 'end'].includes(size)) {
         css += `.self-${size} { align-self: flex-${size}; }\n`;
     } else {
         css += `.self-${size} { align-self: ${size}; }\n`;
@@ -495,7 +495,7 @@ for (const size of ['auto', 'start', 'end', 'center', 'baseline', 'stretch']) {
 
 // - Place Content
 for (const size of ['start', 'end', 'center', 'between', 'around', 'evenly', 'stretch']) {
-    if (size in ['between', 'around', 'evenly']) {
+    if (['between', 'around', 'evenly'].includes(size)) {
         css += `.place-content-${size} { place-content: space-${size}; }\n`;
     } else {
         css += `.place-content-${size} { place-content: ${size}; }\n`;
@@ -519,7 +519,7 @@ for (const size of ['auto', 'start', 'end', 'center', 'stretch']) {
 for (const prefix of ['p', 'm', '-m']) {
     for (const dir of ['', 't', 'r', 'b', 'l']) {
         for (const size in config.theme.spacing) {
-            if (['0', 'px', '1', '2', '4', '8', '16', '32'].indexOf(size) == -1) {
+            if (!['0', 'px', '1', '2', '4', '8', '16', '32'].includes(size)) {
                 continue;
             }
             const css1 = prefix == 'p' ? 'padding' : 'margin';
@@ -535,7 +535,7 @@ for (const prefix of ['p', 'm', '-m']) {
     }
     for (const dir of ['x', 'y']) {
         for (const size in config.theme.spacing) {
-            if (['0', 'px', '1', '2', '4', '8', '16', '32'].indexOf(size) == -1) {
+            if (!['0', 'px', '1', '2', '4', '8', '16', '32'].includes(size)) {
                 continue;
             }
             const css1 = prefix == 'p' ? 'padding' : 'margin';
@@ -546,7 +546,7 @@ for (const prefix of ['p', 'm', '-m']) {
     }
     for (const dir of ['s', 'e']) {
         for (const size in config.theme.spacing) {
-            if (['0', 'px', '1', '2', '4', '8', '16', '32'].indexOf(size) == -1) {
+            if (!['0', 'px', '1', '2', '4', '8', '16', '32'].includes(size)) {
                 continue;
             }
             const css1 = prefix == 'p' ? 'padding' : 'margin';
@@ -558,7 +558,7 @@ for (const prefix of ['p', 'm', '-m']) {
 
 // - Width(+min/max): Only ['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'] are supported
 for (const size in config.theme.width) {
-    if (['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'].indexOf(size) == -1) {
+    if (!['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'].includes(size)) {
         continue;
     }
     css += `.w-${escapeDot(size)} { width: ${config.theme.width[size]}; }\n`;
@@ -568,7 +568,7 @@ for (const size in config.theme.width) {
 
 // - Height(+min/max): Only ['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'] are supported
 for (const size in config.theme.height) {
-    if (['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'].indexOf(size) == -1) {
+    if (!['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'].includes(size)) {
         continue;
     }
     css += `.h-${escapeDot(size)} { height: ${config.theme.height[size]}; }\n`;
@@ -579,7 +579,7 @@ for (const size in config.theme.height) {
 
 // - Size(+min/max): Only ['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'] are supported
 for (const size in config.theme.size) {
-    if (['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'].indexOf(size) == -1) {
+    if (!['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'].includes(size)) {
         continue;
     }
     css += `.size-${escapeDot(size)} { width: ${config.theme.size[size]}; height: ${config.theme.size[size]}; }\n`;
@@ -660,7 +660,7 @@ for (const color in config.theme.textColor) {
     if (typeof (config.theme.textColor[color]) === 'string') {
         css += `.text-${color} { color: ${config.theme.textColor[color]}; }\n`;
     } else {
-        if (allowedColors.indexOf(color) == -1) {
+        if (!allowedColors.includes(color)) {
             continue;
         }
         for (const shade in config.theme.textColor[color]) {
@@ -682,7 +682,7 @@ for (const size in config.theme.textDecorationColor) {
     if (typeof (config.theme.textDecorationColor[size]) === 'string') {
         css += `.decoration-${size} { text-decoration-color: ${config.theme.textDecorationColor[size]}; }\n`;
     } else {
-        if (allowedColors.indexOf(size) == -1) {
+        if (!allowedColors.includes(size)) {
             continue;
         }
         for (const shade in config.theme.textDecorationColor[size]) {
@@ -766,7 +766,7 @@ for (const color in config.theme.accentColor) {
     if (typeof (config.theme.accentColor[color]) === 'string') {
         css += `.bg-${color} { background-color: ${config.theme.accentColor[color]}; }\n`;
     } else {
-        if (allowedColors.indexOf(color) == -1) {
+        if (!allowedColors.includes(color)) {
             continue;
         }
         for (const shade in config.theme.accentColor[color]) {
@@ -794,7 +794,7 @@ for (const color in config.theme.accentColor) {
     if (typeof (config.theme.accentColor[color]) === 'string') {
         css += `.border-${color} { border-color: ${config.theme.accentColor[color]}; }\n`;
     } else {
-        if (allowedColors.indexOf(color) == -1) {
+        if (!allowedColors.includes(color)) {
             continue;
         }
         for (const shade in config.theme.accentColor[color]) {
@@ -907,7 +907,7 @@ for (const color in config.theme.accentColor) {
     if (typeof (config.theme.accentColor[color]) === 'string') {
         css += `.accent-${color} { accent-color: ${config.theme.accentColor[color]}; }\n`;
     } else {
-        if (allowedColors.indexOf(color) == -1) {
+        if (!allowedColors.includes(color)) {
             continue;
         }
         for (const shade in config.theme.accentColor[color]) {
@@ -923,7 +923,7 @@ for (const size of ['none', 'auto']) {
 
 // - Cursor (Only ['auto', 'default', 'pointer', 'wait', 'text'] are supported)
 for (const size in config.theme.cursor) {
-    if (['auto', 'default', 'pointer', 'wait', 'text'].indexOf(size) == -1) {
+    if (!['auto', 'default', 'pointer', 'wait', 'text'].includes(size)) {
         continue;
     }
     css += `.cursor-${size} { cursor: ${config.theme.cursor[size]}; }\n`;
