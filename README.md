@@ -14,12 +14,12 @@ If you're looking for a full functional version, please refer to the [Official P
 
 ```html
 <!-- From UNPKG -->
-<link href="https://unpkg.com/tailwindcss-utilities@1.0.8/dist/tailwind-utilities.min.css" rel="stylesheet" crossorigin />
-<script src="https://unpkg.com/tailwindcss-utilities@1.0.8/dist/tailwind-utilities.min.js" defer ></script>
+<link href="https://unpkg.com/tailwindcss-utilities@1.0.9/dist/tailwind-utilities.min.css" rel="stylesheet" crossorigin />
+<script src="https://unpkg.com/tailwindcss-utilities@1.0.9/dist/tailwind-utilities.min.js" defer ></script>
 
 <!-- From jsDelivr -->
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.8/dist/tailwind-utilities.min.css" rel="stylesheet" crossorigin crossorigin />
-<script src="https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.8/dist/tailwind-utilities.min.js" defer></script>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.9/dist/tailwind-utilities.min.css" rel="stylesheet" crossorigin crossorigin />
+<script src="https://cdn.jsdelivr.net/npm/tailwindcss-utilities@1.0.9/dist/tailwind-utilities.min.js" defer></script>
 
 <!-- From Taobao npmmirror (option 3, for China users) -->
 <link href="https://registry.npmmirror.com/tailwindcss-utilities/1.0.7/files/dist/tailwindcss-utilities-min.css" rel="stylesheet" crossorigin  />

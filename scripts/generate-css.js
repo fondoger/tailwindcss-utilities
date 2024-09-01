@@ -14,9 +14,9 @@ for (const color in config.theme.accentColor) {
         delete config.theme.accentColor[color];
     }
 }
-// Size (Only ['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'] are supported)
-for (const height of Object.keys(config.theme.height)) {
-    if (!['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'].includes(height)) {
+// Size (Only ['auto', '0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'] are supported)
+for (const height of [...Object.keys(config.theme.height), ...Object.keys(config.theme.width)]) {
+    if (!['auto', '0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'].includes(height)) {
         delete config.theme.height[height];
         delete config.theme.width[height];
         delete config.theme.size[height];
@@ -26,10 +26,13 @@ for (const height of Object.keys(config.theme.height)) {
         delete config.theme.maxWidth[height];
     }
 }
-// Spacing (Only ['0', 'px', '1', '2', '4', '8', '16', '32'] are supported)
-for (const size in config.theme.spacing) {
-    if (!(['0', 'px', '1', '2', '4', '8', '16', '32'].includes(size))) {
+// Spacing (Only ['auto', '0', 'px', '1', '2', '4', '8', '16', '32'] are supported)
+for (const size of [...Object.keys(config.theme.spacing), ...Object.keys(config.theme.margin), ...Object.keys(config.theme.gap), ...Object.keys(config.theme.padding)]) {
+    if (!(['auto', '0', 'px', '1', '2', '4', '8', '16', '32'].includes(size))) {
         delete config.theme.spacing[size];
+        delete config.theme.margin[size];
+        delete config.theme.gap[size];
+        delete config.theme.padding[size];
     }
 }
 // Responsive Design not supported
@@ -434,11 +437,8 @@ for (const size in config.theme.gridAutoRows) {
     css += `.auto-rows-${size} { grid-auto-rows: ${config.theme.gridAutoRows[size]}; }\n`;
 }
 
-// - Gap: (Only ['0', 'px', '1', '2', '4', '8', '16', '32'] are supported)
+// - Gap: (Only ['auto', '0', 'px', '1', '2', '4', '8', '16', '32'] are supported)
 for (const size in config.theme.gap) {
-    if (!['0', 'px', '1', '2', '4', '8', '16', '32'].includes(size)) {
-        continue;
-    }
     css += `.gap-${escapeDot(size)} { gap: ${config.theme.gap[size]}; }\n`;
 }
 
@@ -515,52 +515,34 @@ for (const size of ['auto', 'start', 'end', 'center', 'stretch']) {
 // Part 3: Spacing
 
 // - Margin & Padding 
-// (Only ['0', 'px', '1', '2', '4', '8', '16', '32'] are supported)
+// (only ['auto', '0', 'px', '1', '2', '4', '8', '16', '32'] are supported)
 for (const prefix of ['p', 'm', '-m']) {
-    for (const dir of ['', 't', 'r', 'b', 'l']) {
-        for (const size in config.theme.spacing) {
-            if (!['0', 'px', '1', '2', '4', '8', '16', '32'].includes(size)) {
-                continue;
+    for (const dir of ['', 't', 'r', 'b', 'l', 'x', 'y', 's', 'e']) {
+        const css1 = prefix == 'p' ? 'padding' : 'margin';
+        for (const [size, value] of Object.entries(config.theme[css1])) {
+            if (['', 't', 'r', 'b', 'l'].includes(dir)) {
+                const css2 = {
+                    '': '',
+                    't': '-top',
+                    'r': '-right',
+                    'b': '-bottom',
+                    'l': '-left'
+                }[dir];
+                css += `.${prefix}${dir}-${escapeDot(size)} { ${css1}${css2}: ${value}; }\n`;
+            } else if (['x', 'y'].includes(dir)) {
+                const a = dir == 'x' ? 'left' : 'top';
+                const b = dir == 'x' ? 'right' : 'bottom';
+                css += `.${prefix}${dir}-${escapeDot(size)} { ${css1}-${a}: ${value}; ${css1}-${b}: ${value}; }\n`;
+            } else if (['s', 'e'].includes(dir)) {
+                const css2 = dir == 's' ? 'inline-start' : 'inline-end';
+                css += `.${prefix}${dir}-${escapeDot(size)} { ${css1}-${css2}: ${value}; }\n`;
             }
-            const css1 = prefix == 'p' ? 'padding' : 'margin';
-            const css2 = {
-                '': '',
-                't': '-top',
-                'r': '-right',
-                'b': '-bottom',
-                'l': '-left'
-            }[dir];
-            css += `.${prefix}${dir}-${escapeDot(size)} { ${css1}${css2}: ${config.theme.spacing[size]}; }\n`;
-        }
-    }
-    for (const dir of ['x', 'y']) {
-        for (const size in config.theme.spacing) {
-            if (!['0', 'px', '1', '2', '4', '8', '16', '32'].includes(size)) {
-                continue;
-            }
-            const css1 = prefix == 'p' ? 'padding' : 'margin';
-            const a = dir == 'x' ? 'left' : 'top';
-            const b = dir == 'x' ? 'right' : 'bottom';
-            css += `.${prefix}${dir}-${escapeDot(size)} { ${css1}-${a}: ${config.theme.spacing[size]}; ${css1}-${b}: ${config.theme.spacing[size]}; }\n`;
-        }
-    }
-    for (const dir of ['s', 'e']) {
-        for (const size in config.theme.spacing) {
-            if (!['0', 'px', '1', '2', '4', '8', '16', '32'].includes(size)) {
-                continue;
-            }
-            const css1 = prefix == 'p' ? 'padding' : 'margin';
-            const css2 = dir == 's' ? 'inline-start' : 'inline-end';
-            css += `.${prefix}${dir}-${escapeDot(size)} { ${css1}-${css2}: ${config.theme.spacing[size]}; }\n`;
         }
     }
 }
 
 // - Width(+min/max): Only ['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'] are supported
 for (const size in config.theme.width) {
-    if (!['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'].includes(size)) {
-        continue;
-    }
     css += `.w-${escapeDot(size)} { width: ${config.theme.width[size]}; }\n`;
     css += `.min-w-${escapeDot(size)} { min-width: ${config.theme.width[size]}; }\n`;
     css += `.max-w-${escapeDot(size)} { max-width: ${config.theme.width[size]}; }\n`;
@@ -568,9 +550,6 @@ for (const size in config.theme.width) {
 
 // - Height(+min/max): Only ['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'] are supported
 for (const size in config.theme.height) {
-    if (!['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'].includes(size)) {
-        continue;
-    }
     css += `.h-${escapeDot(size)} { height: ${config.theme.height[size]}; }\n`;
     css += `.min-h-${escapeDot(size)} { min-height: ${config.theme.height[size]}; }\n`;
     css += `.max-h-${escapeDot(size)} { max-height: ${config.theme.height[size]}; }\n`;
@@ -579,9 +558,6 @@ for (const size in config.theme.height) {
 
 // - Size(+min/max): Only ['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'] are supported
 for (const size in config.theme.size) {
-    if (!['0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'].includes(size)) {
-        continue;
-    }
     css += `.size-${escapeDot(size)} { width: ${config.theme.size[size]}; height: ${config.theme.size[size]}; }\n`;
     css += `.min-size-${escapeDot(size)} { min-width: ${config.theme.size[size]}; min-height: ${config.theme.size[size]}; }\n`;
     css += `.max-size-${escapeDot(size)} { max-width: ${config.theme.size[size]}; max-height: ${config.theme.size[size]}; }\n`;
