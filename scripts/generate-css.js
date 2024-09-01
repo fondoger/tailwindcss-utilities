@@ -889,6 +889,17 @@ for (const size of ['top', 'bottom']) {
 // Part 10: Transition/Animation
 
 // - Animation:
+for (const keyframe in config.theme.keyframes) {
+    css += `@keyframes ${keyframe} {`
+    for (const frame in config.theme.keyframes[keyframe]) {
+        css += `${frame} {`
+        for (const prop in config.theme.keyframes[keyframe][frame]) {
+            css += `${prop}: ${config.theme.keyframes[keyframe][frame][prop]};`
+        }
+        css += `}`
+    }
+    css += `}\n`;
+}
 for (const size in config.theme.animation) {
     css += `.animate-${size} { animation: ${config.theme.animation[size]}; }\n`;
 }
