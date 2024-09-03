@@ -920,7 +920,7 @@ for (const size in config.theme.cursor) {
 
 // - Pointer Events
 for (const size of ['auto', 'none']) {
-    css += `.pointer-${size} { pointer-events: ${size}; }\n`;
+    css += `.pointer-events-${size} { pointer-events: ${size}; }\n`;
 }
 
 // - Resize
