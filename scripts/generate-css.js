@@ -1,19 +1,9 @@
 
-const config = require('../tcv-build/config.712db4de.json');
-const fs = require('fs');
-const path = require('path');
+const configFilePath = "../tcv-build/config.9afcbecd.json";
+const config = require(configFilePath);
+const fs = require("fs");
+const path = require("path");
 
-// modify the config file in place
-for (const color in config.theme.accentColor) {
-    if (typeof (config.theme.accentColor[color]) !== 'string' && !(['gray', 'red', 'green', 'amber', 'sky'].includes(color))) {
-        for (const shade in config.theme.accentColor[color]) {
-            delete config.theme.backgroundColor[`${color}-${shade}`];
-            delete config.theme.borderColor[`${color}-${shade}`];
-            delete config.theme.textColor[`${color}-${shade}`];
-        }
-        delete config.theme.accentColor[color];
-    }
-}
 // Size (Only ['auto', '0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'] are supported)
 for (const height of [...Object.keys(config.theme.height), ...Object.keys(config.theme.width)]) {
     if (!['auto', '0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'].includes(height)) {
@@ -41,7 +31,7 @@ delete config.theme.screens;
 delete config.theme.transitionTimingFunction;
 
 
-fs.writeFileSync(path.join(__dirname, '../tcv-build/config.712db4de.json'), JSON.stringify(config, null, 4));
+fs.writeFileSync(path.join(__dirname, configFilePath), JSON.stringify(config, null, 4));
 
 var css = '';
 const allowedColors = ['gray', 'red', 'green', 'amber', 'sky'];
