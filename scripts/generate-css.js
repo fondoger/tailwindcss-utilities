@@ -1,8 +1,18 @@
 
-const configFilePath = "../tcv-build/config.9afcbecd.json";
-const config = require(configFilePath);
 const fs = require("fs");
 const path = require("path");
+
+function findConfigFile(dir) {
+    const candidates = fs.readdirSync(dir).filter((file) => /^config\..+\.json$/.test(file));
+    if (candidates.length === 0) {
+        throw new Error(`No Tailwind config JSON found in ${dir}`);
+    }
+    candidates.sort();
+    return path.join(dir, candidates[candidates.length - 1]);
+}
+
+const configFilePath = findConfigFile(path.resolve(__dirname, "../tcv-build"));
+const config = require(configFilePath);
 
 // Size (Only ['auto', '0', 'px', 'full', 'screen', 'auto', 'min', 'max', 'fit'] are supported)
 for (const height of [...Object.keys(config.theme.height), ...Object.keys(config.theme.width)]) {
@@ -31,7 +41,7 @@ delete config.theme.screens;
 delete config.theme.transitionTimingFunction;
 
 
-fs.writeFileSync(path.join(__dirname, configFilePath), JSON.stringify(config, null, 4));
+fs.writeFileSync(configFilePath, JSON.stringify(config, null, 4));
 
 var css = '';
 const allowedColors = ['gray', 'red', 'green', 'amber', 'sky'];
